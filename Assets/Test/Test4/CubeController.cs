@@ -22,7 +22,7 @@ public class CubeController : MonoBehaviour
         huong = true;
         target = bPoint;
         count = 0;
-        
+        aPoint.LookAt(bPoint);
     }
     private void Update()
     {
@@ -56,7 +56,7 @@ public class CubeController : MonoBehaviour
         // E. Di chuyen object Cube quay quanh A theo truc tao boi vector AB voi van toc v,
         // ban kinh r, object Cube luon huong truc Y ve A khi quay.
         float angle = Time.time * v/r;
-        Vector3 localPositionOnCircle = new Vector3(0f,Mathf.Sin(angle) * r, Mathf.Cos(angle) * r);
+        Vector3 localPositionOnCircle = new Vector3(Mathf.Sin(angle) * r, Mathf.Cos(angle) * r,0f);
         Vector3 worldPositionOnCircle = aPoint.TransformPoint(localPositionOnCircle);
         transform.position = worldPositionOnCircle;
         transform.LookAt(aPoint, Vector3.right);
